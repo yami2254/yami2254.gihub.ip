@@ -1,100 +1,81 @@
-# Material Theme for Jekyll!
-## DEMO: [code.liquidthink.net](http://www.code.liquidthink.net)
-#### created with React, Redux, React-Router and transpiled with Webpack.
-![travis-ci](https://api.travis-ci.org/InsidiousMind/material-bliss-jekyll-theme.svg?branch=master)
+# jekyll-mdl
+> A Jekyll theme based in Google Material Design Lite library.
 
-Made with React and served statically and dynamically
+## Demo
 
-### **in order to build:**
-#### for Production
-```
-./build-prod.sh //for production build
-```
+You can see the online demo here [http://gdgmanagua.github.io/jekyll-mdl/](http://gdgmanagua.github.io/jekyll-mdl/)
 
-#### for Development:
-run both build-dev and npm run jekyll in different terminals
-```
-npm run jekyll // in one terminal
-./build-dev.sh //in another
-```
-### Features:
-- Two Themes: Light and Dark
-- Fully Responsive for most devices
-- Dynamic Fuzzy Search
-- Push-out Menu to save space and create focus for users
-- Dynamic Project Page in a masonry layout built
-- The pros of dynamic webpages matched with the awesomeness of static Jekyll
-- Optimized (99/100 on testmysite by google) with Jekyll Assets and Webpack
-- included RESTful-like API (with [jekyll-react plugin](https://github.com/InsidiousMind/Jekyll-React))
-- Static or Dynamic Pages with just a frontmatter option
-- MORE TO COME
+![Demo](https://raw.githubusercontent.com/gdg-managua/jekyll-mdl/master/jekyll-mdl-screen.png)
 
-### Screen Shots
+## Sites using jekyll-mdl
 
-Dark Theme
-![Dark Theme](http://i.imgur.com/GfFoLXS.png)
+If you are using this cool jekyll theme, please open an issue or fork the project, add your site to the list and send us a pull request, we will be happy to know where the theme has been used.
 
-Light Theme
-![Light Theme](http://i.imgur.com/cdIgtax.png)
+- [prosa100.github.io](http://prosa100.github.io/)
+- [fandekasp.github.io](http://fandekasp.github.io/)
+- [webiphany.com](http://webiphany.com)
+- [siempredelao.github.io](http://siempredelao.github.io/)
+- [sparker0i.github.io](http://sparker0i.github.io/)
+- [kris27mc.github.io](https://kris27mc.github.io)
 
-Dark Theme with Push out menu active
-![Dark Theme Push Out](http://i.imgur.com/xsjkszO.png)
+## Custom Themes
 
-Project Page
-![Project Page](http://i.imgur.com/VnLqCpi.png)
+If you don't want the default site colors, you can create custom themes for the site in the [mdl theme creator](http://www.getmdl.io/customize/index.html). The site will create a custom css, something like this:
 
-Single Post
-![Post](http://i.imgur.com/AcZ8nNi.png)
+     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.teal-green.min.css" />
 
+Now add this in the _includes/head.html file, under the main css and enjoy your new theme.
 
-## Site Layout
+## Post Options
 
-`./react-dev/pages`
-- These are static Jekyll components being rendered with react
+All the post, require an image and maybe an author and declare if the post is highlighted or not, the image are used in the cards and the autor used for the footer in the cards, the highlighted post is used for make this 12 cols and not a card, if you want to use the custom images and set the author and the highlight post, just add a new key in the post config, something like this:
 
-`./react-dev/helpers.js`
-- these are global helpers. Right now all that is included are the static routes of you're site. Put all your static routes there (in 'staticRoutes' array), you don't need the full route just the base after your url So for example, if my posts are static and are at
- `http://www.example.com/posts/this-is-a-post.html`
- you just need "/posts/"
- this makes the loading of some parts of the site seem almost 'instant', while preserving the SEO of your site since Google can crawl the static content
+    ---
+    layout: post
+    title:  "Welcome to jekyll-mdl"
+    date:   2015-07-11 11:34:20
+    categories: jekyll
+    highlight: true
+    image: http://www.wchs4pets.org/wp-content/uploads/2015/03/cat_1-jpg.jpg
+    author: Google Developers Group Managua
+    ---
 
-`./react-dev/components/menu_items.js`
+## Layout Configuration
+You can setup 4 types of layout
 
-- This is where your menu items are rendered. If you want a new item, add an object to the Hashlist with it's corresponding path (from your root url) Javascript object. IE if it is:
+- Fixed Nav + Simple Card Grid
+- Fixed Nav + Highlight Post + Card Grid
+- Drawer Nav + Simple Card Grid
+- Drawer Nav + Highlight Post + Card Grid
 
-`const menuItems = { Home: '/', About: '/about/', Projects: '/projects/' };`
-and you want another entry, "Coding", with a path '/coding/' from the root url the object should look something like this :
-`const menuItems = { Home: '/', About: '/about/', Projects: '/projects/', Coding: '/coding'};`
+For use this in the [_config.yml](https://github.com/gdg-managua/jekyll-mdl/blob/master/_config.yml) select the type of layout, rebuild the website and voilà :smile:
 
+## Contributing
+If you want to contribute to this project, please read the [CONTRIBUTING](https://github.com/gdg-managua/jekyll-mdl/blob/master/CONTRIBUTING.md) file and perform the following steps
 
-`./react-dev/actions/index.js`
-- this is where the magic happens from the JSON our Jekyll plugins rendered ( Jekyll_pages_api and Jekyll-react)
-You're going to want to add your site url to the `ROOT_URL` variable
-EX:
-if your site is at `http://www.example.com` change
-`const ROOT_URL = 'http://test_domain.com:4000';`
-to
-`const ROOT_URL = 'http://example.com';`
+    # Fork this repository
+    # Clone your fork
+    jekyll serve --watch
 
+    git checkout -b feature_branch
+    # Implement your feature and tests
+    git add . && git commit
+    git push -u origin feature_branch
+    # Send a pull request for your feature branch
 
-### Site Config Variables:
-any site configuration that you want to let React use, put under 'react' in your `_config.yml`. This will be grabbed by the siteInfo action creator and put through it's corresponding reducer
+## Team
+[![Oscar Cortez](https://avatars.githubusercontent.com/u/2553459?v=3&s=100)](http://github.com/oscarmcm) | [![Byron Corrales](https://avatars.githubusercontent.com/u/99616?v=3&s=100)](https://github.com/byroncorrales)
+---|---
+[Oscar Cortez](http://github.com/oscarmcm) | [Byron Corrales](https://github.com/byroncorrales)
+Project Lead | Contributor
 
-### TODO:
- - [x] create a jekyll plugin to output all [YML config] site data into JSON, in such a way which is importable to react and can be used to manage state
- - [x] [possible TODO, maybe redundant. ?] Rendered JS to HTML and outputted into a folder for Jekyll to take it. This allows us to use React components on `_layouts`
- - [x] create a Dynamic Search Function with Auto Fill
- - [x] Finish implementing Toggle Theme Switch
- - [ ] add useful important information to single-post post meta
- - [ ] make footer look better on mobile
- - [ ] Implement 'sliding' on mobile-touchA
- - [ ] make expanded search bar more responsive on mobile
- - [ ] create category pages
- - [ ] add pagination
- - [ ] Make different post 'types' (IE Fullsize page)
- - [ ] make it easier to use with Jekyll
- - [ ] Save theme in sites cookies
+## License
+Licensed under the Apache 2.0 license.
+
+See the [LICENSE](https://github.com/gdg-managua/jekyll-mdl/blob/master/LICENSE.md) file for more details.
+
+Copyright © 2015 [Google Developers Group Managua](http://www.gdgmanagua.org).
 
 
-### Contribution
-Want to contribute? Found an issue? Jump right in! I welcome any help I can get, and will work with you to fix any issues.
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/gdg-managua/jekyll-mdl/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
